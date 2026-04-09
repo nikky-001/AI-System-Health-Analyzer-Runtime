@@ -21,7 +21,7 @@ def predict_health(features):
     inputs = np.array([features], dtype=np.float32)
     output = session.run(None, {input_name: inputs})
 
-    score = int(round(output[0][0]))
+    score = int(round(float(output[0][0])))
     score = max(0, min(100, score))
 
     category = get_category(score)
