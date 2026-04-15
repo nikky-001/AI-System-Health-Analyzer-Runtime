@@ -2,6 +2,7 @@ import time
 from src.collector import collect_metrics
 from src.feature_engineering import process_features
 from src.health_engine import predict_health
+from src.health_engine import display_output
 
 print("🚀 Starting AI Health Monitor...\n")
 
@@ -20,6 +21,9 @@ while True:
         # store latest output
         current_output["score"] = score
         current_output["category"] = category
+
+        # display output
+        display_output(score, category)
 
         time.sleep(1)
 
