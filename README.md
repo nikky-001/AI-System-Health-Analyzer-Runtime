@@ -85,8 +85,7 @@ This project supports two types of integration:
 ### ✅ Python-Based Systems
 
 * Run `main.py` for continuous monitoring
-                   Or
-* Directly use the prediction function from `runtime_engine.py`
+* Or directly use the prediction function from `runtime_engine.py`
 
 ### 🔥 Non-Python Systems (Router / Embedded)
 
