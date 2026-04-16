@@ -1,35 +1,17 @@
 import time
-from src.collector import collect_metrics
-from src.feature_engineering import process_features
-from src.health_engine import predict_health
-from src.health_engine import display_output
+from src.runtime_engine import get_system_health
 
-print("🚀 Starting AI Health Monitor....\n")
-
-current_output = {
-    "score": None,
-    "category": None
-}
+print("🚀 Running Health Monitor...\n")
 
 while True:
-    try:
-        metrics = collect_metrics()
-        features = process_features(metrics)
+    data = get_system_health()
 
-        score, category = predict_health(features)
+    print(f"Score: {data['score']} | Status: {data['category']}")
 
-        # store latest output
-        current_output["score"] = score
-        current_output["category"] = category
+    if data["alert"]:
+        print(data["alert"])
 
-        # display output
-        display_output(score, category)
-
-        time.sleep(1)
-
-    except KeyboardInterrupt:
-        print("\n🛑 Stopped by user")
-        break
+    time.sleep(1)
 
 
         
